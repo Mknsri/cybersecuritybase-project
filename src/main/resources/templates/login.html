@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sign up or log in</title>
+    </head>
+    <body>
+
+        <h1>Kuontalo-opus</h1>
+        <div style="float: left; margin: 10px">
+            <h2>Log in</h2>
+
+            <form action="#" th:action="@{/login}" method="POST">
+                <p><label for="email">Email</label>: <input type="text" name="email" id="email"/></p>
+                <p><label for="password">Password</label>: <input type="password" name="password" id="password"/></p>
+                <p><input type="submit" value="Submit" /></p>
+            </form>
+            <a href="/forgotpassword">Forgot password?</a>
+        </div>
+        <div style="float: left; margin: 10px">
+            <h2>Sign up</h2>
+            <form action="#" th:action="@{/register}" method="POST">
+                <p><label for="email">Email</label>: <input type="text" name="email" id="email"/></p>
+                <p><label for="password">Name</label>: <input type="text" name="name" id="name"/></p>
+                <p><label for="password">Password</label>: <input type="password" name="password" id="password"/></p>
+                <p><input type="submit" value="Submit" /></p>
+            </form>
+        </div>
+        <p th:if="${error != null}" th:text="${error}" style="text-color: #FF0000" />
+        <p th:if="${message != null}" th:text="${message}" /> 
+    </body>
+</html>

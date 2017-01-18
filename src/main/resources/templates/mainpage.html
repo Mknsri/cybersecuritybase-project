@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Kuontalo-opus!</title>
+    </head>
+    <body>
+        <h2 th:inline="text">Welcome [[${userName}]]!
+            <a href="/login">Logout</a>
+        </h2>
+        <form action="#" th:action="@{/post}" method="POST">
+            <input type="text" name="message" placeholder="Whatcha thinking?" />
+            <input type="submit" />
+        </form><br />
+        <ul>       
+        <li th:each="post : ${posts}">
+            <p th:inline="text">[[${post.owner.name}]]:</p>
+            &quot;<span th:utext="${post.message}" />&quot;
+            <hr />
+        </li>
+
+        </ul>
+    </body>
+</html>
