@@ -88,7 +88,7 @@ public class MainPageController {
     }
 
     private void addUsers() {
-        ArrayList<String> firstNames = new ArrayList();        
+        ArrayList<String> firstNames = new ArrayList();                
         firstNames.add("Marja");
         firstNames.add("Seppo");
         firstNames.add("Nikita");
@@ -97,7 +97,7 @@ public class MainPageController {
         firstNames.add("Jooseppi");
         firstNames.add("David");
         firstNames.add("Zuck");
-        ArrayList<String> lastNames = new ArrayList(); 
+        ArrayList<String> lastNames = new ArrayList();         
         lastNames.add("Virtanen");
         lastNames.add("666");
         lastNames.add("Vsailitzev"); 
@@ -119,7 +119,10 @@ public class MainPageController {
         messages.add("ヽ༼ຈل͜ຈ༽ﾉ woo");
         messages.add("Kuka tietää miten tänne lisätään postaus");
         
-        
+        // Test account
+        Account test = new Account("test@test.com", "Test Man", "test");
+        accountRepository.save(test);
+
         for (int i = 0; i < 5; i++) {
             String fName = firstNames.remove((int)(Math.random() * firstNames.size()));
             String lName = lastNames.remove((int)(Math.random() * lastNames.size()));
