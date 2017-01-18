@@ -1,4 +1,4 @@
-Course project for the [https://cybersecuritybase.github.io/](Cyber Security Base MOOC) by the University of Helsinki.
+Course project for the [Cyber Security Base MOOC](https://cybersecuritybase.github.io/) by the University of Helsinki.
 
 Kuontalo-opus is a cutting-edge, fully featured, social media gathering experience where you can post messages and share your personal story with 10's of others completely real users. Our top-notch engineering team have delivered a truly remarkable product that will expand and enrich your social life in new and untold exciting ways.
 
