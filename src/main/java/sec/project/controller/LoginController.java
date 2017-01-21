@@ -20,6 +20,11 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loadForm(HttpServletResponse response) {
+        return "login";
+    }
+    
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    public String logout(HttpServletResponse response) {
         Cookie resetSessionTokenCookie = new Cookie("sessiontoken", null);
         Cookie resetSessionIdCookie = new Cookie("sessionid", null);
         resetSessionTokenCookie.setMaxAge(0); // Clear cookies
@@ -28,7 +33,7 @@ public class LoginController {
         response.addCookie(resetSessionTokenCookie);
         response.addCookie(resetSessionIdCookie);
         
-        return "login";
+        return "redirect:/login";
     }
     
     @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
