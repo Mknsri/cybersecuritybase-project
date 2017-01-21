@@ -71,9 +71,11 @@ Vulnerability nr 5: Leaking password information through cookies
 OWASP Top 10 type: A6 - Sensitive Data Exposure
 Description: Cookies are used for session management, and encrypted using the application creators' own crypto library called UltraSecure. This library however uses extremely weak encryption and stores users password in the cookies. If the sites cookies and users email address are leaked through using other vulnerabilities on the site, the plain text password can be easily decrypted from the cookies.
 How to replicate:
-1. Log in to the application, either using your own account or the test account:
+1. Log in to the application using the test account:
 	Email: test@test.com
 	Password: test
 2. Find and copy the value of the cookie "sessiontoken"
-3. Input the value into 
+3. Input the value into an decimal to ASCII converter (for example https://www.branah.com/ascii-converter)
+4. Type a space between every 3rd number so (so for "test" account the token 116101115116 becomes 116 101 115 116)
+5. The password test is clearly visible
 

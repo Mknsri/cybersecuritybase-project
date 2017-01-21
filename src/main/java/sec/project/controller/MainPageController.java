@@ -117,12 +117,12 @@ public class MainPageController {
         messages.add("kuukle vw jakohihna perähikiä");
         messages.add("KO on jeejee");
         messages.add("ヽ༼ຈل͜ຈ༽ﾉ woo");
-        messages.add("Kuka tietää miten tänne lisätään postaus");
-        
+        messages.add("Kuka tietää miten tänne lisätään postaus");               
+
         // Test account
         Account test = new Account("test@test.com", "Test Man", "test");
         accountRepository.save(test);
-
+        
         for (int i = 0; i < 5; i++) {
             String fName = firstNames.remove((int)(Math.random() * firstNames.size()));
             String lName = lastNames.remove((int)(Math.random() * lastNames.size()));
@@ -133,8 +133,6 @@ public class MainPageController {
             
             Post p = new Post(a, msg);
             postRepository.save(p);            
-        }
-        
-        
+        }                
     }
 }

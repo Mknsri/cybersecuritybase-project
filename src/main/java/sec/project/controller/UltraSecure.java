@@ -8,7 +8,7 @@ public class UltraSecure {
     public static String getSessionToken(String password) {
         String token = "";
         for (char c : password.toCharArray()) {
-            token += Character.getNumericValue(c);
+            token += String.valueOf((int) c);
         }
         
         return token;
