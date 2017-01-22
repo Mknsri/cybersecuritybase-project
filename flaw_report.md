@@ -46,7 +46,7 @@ CSRF protection is already enabled in the application, but incorrect usage of th
 
 **Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/41147ca6faedac03ec1857d076a49077f24ca6a9**
 
-Vulnerability nr 2: Leaking user email addresses due to insecure object references
+Vulnerability #2: Leaking user email addresses due to insecure object references
 =============
 **OWASP Top 10 type: A4 - Insecure Direct Object References**
 ### Description:
@@ -64,7 +64,7 @@ The password reset message containing the user's email can be sent in the same r
 
 ***Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/abf7948745cc75779dd567eadc94ad09764c5c55***
 
-Vulnerability nr 3: Stored XSS vulnerability in the posts feature
+Vulnerability #3: Stored XSS vulnerability in the posts feature
 ======
 **OWASP Top 10 type: A3 - Cross-Site Scripting (XSS)**
 ### Description: 
@@ -84,7 +84,7 @@ With Thymeleaf templates, fixing this vulnerability is simple. Just change the t
 
 **Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/c22b8ae796bb3c6630496f2f3a999149f5b3bd86**
 
-Vulnerability nr 4: Impersonating as other users and submitting posts in their name
+Vulnerability #4: Impersonating as other users and submitting posts in their name
 ======
 **OWASP Top 10 type: A2 - Broken Authentication and Session Management**
 ### Description: 
@@ -103,7 +103,7 @@ Redoing the session management should be the first priority, however as a quick 
 
 **Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/ef320061a4778c61c3afb27f6749cea987d79c12**
 
-Vulnerability nr 5: Leaking password information through cookies
+Vulnerability #5: Leaking password information through cookies
 ===
 **OWASP Top 10 type: A6 - Sensitive Data Exposure**
 ### Description: 
