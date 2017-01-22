@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sec.project.domain.Account;
 import sec.project.repository.AccountRepository;
@@ -37,26 +38,31 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
-    public String forgotPassword(@RequestParam(required = false) Long id, Model model) {
-        if (id != null) {
-            Account a = accountRepository.findOne(id);
-            if (a != null) {
-                model.addAttribute("message", 
-                        "Your password has been sent to " + a.getEmail());
-            }
-        }
-        
+    public String forgotPassword() {
         return "forgotpassword";
     }
     
     @RequestMapping(value = "/forgotpassword", method = RequestMethod.POST)
-    public String forgotPassword(@RequestParam String email, RedirectAttributes ra) {
-        Account existingAccount = accountRepository.findByEmail(email);
+    public String forgotPassword(@RequestParam String email, Model model) {
+        Account existingAccount = accountRepository.findByEmail(email);        
         if (existingAccount != null) {
-            ra.addAttribute("id", existingAccount.getId());
+            // Hide part of the users email
+            String userEmail = existingAccount.getEmail();
+            // Calculate the substring indexes from where to start and end
+            int hideIndexFrom = (int) Math.floor((userEmail.length()-1) * 0.2);            
+            int hideIndexTo = (int) Math.floor((userEmail.length()-1) * 0.8);
+            // Get the parts of the email
+            String emailStart = userEmail.substring(0, hideIndexFrom);
+            String emailEnd = userEmail.substring(hideIndexTo, userEmail.length());
+            
+            String hiddenEmail = emailStart + "***" + emailEnd;
+            model.addAttribute("message",
+                "Your password has been sent to " + hiddenEmail );
+                        
+            return "passwordreset";
         }
         
-        return "redirect:/forgotpassword";
+        return "forgotpassword";        
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
