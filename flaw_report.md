@@ -31,14 +31,16 @@ Vulnerability #1: Forcing user log out using a CSRF -vulnerability
 ### Description:
 A logged in user that visits the login page (found at `http://<host>/login`) logs the user out. This is an intended feature since the logout button on the main page directs to this page. This however opens up a vulnerability. If the user is tricked to request this page when logged in the app, the user is logged out.
 ### How to replicate:
+
 1. Log in to the application either using your own account or the test account:
-	Email: test@test.com
-	Password: test
+    - Email: test@test.com
+    - Password: test
 2. Embed this request on another page:
 `<img src="http://<host address>/login" />`
 3. Visit the page containing this tag
 4. Try to access the main page of the application (`http://<host address>/`)
 5. You are logged out of your current session.
+
 ### How to fix the vulnerability:
 CSRF protection is already enabled in the application, but incorrect usage of the request methods allow this exploit to work. To fix this vulnerability, create a POST-action form and request that logs the user out explicitly instead of doing it everytime a user visits the login page
 
@@ -70,8 +72,8 @@ The posts feature allows user to post their thoughts for others to see. Due to p
 
 ### How to replicate:
 1. Log in to the application, either using your own account or the test account:
-	Email: test@test.com
-	Password: test
+    - Email: test@test.com
+    - Password: test
 2. Into the post-textfield, type the following text:
 `<script>document.body.style="background-color: pink;"</script>`
 3. Press Submit
@@ -90,8 +92,8 @@ The creators of the application have opted to write their own library for sessio
 ### How to replicate:
 
 1. Log in to the application, either using your own account or the test account:
-	Email: test@test.com
-	Password: test
+    - Email: test@test.com
+    - Password: test
 2. Using your browsers console or some other tool, change the cookie sessionid to point to another user's id (for example: 3)
 3. Submit a post using the form provided by the website
 4. Log back in to the application and you will see your post, but as made by another user
@@ -109,8 +111,8 @@ Cookies are used for session management, and encrypted using the application cre
 ### How to replicate:
 
 1. Log in to the application using the test account:
-	Email: test@test.com
-	Password: test
+    - Email: test@test.com
+    - Password: test
 2. Find and copy the value of the cookie "sessiontoken"
 3. Input the value into an decimal to ASCII converter (for example https://www.branah.com/ascii-converter)
 4. Type a space between every 3rd number (so for "test" account the token 116101115116 becomes 116 101 115 116)
