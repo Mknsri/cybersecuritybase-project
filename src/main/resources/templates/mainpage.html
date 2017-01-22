@@ -15,7 +15,7 @@
         <ul>       
         <li th:each="post : ${posts}">
             <p th:inline="text">[[${post.owner.name}]]:</p>
-            &quot;<span th:utext="${post.message}" />&quot;
+            &quot;<span th:text="${post.message}" />&quot;
             <hr />
         </li>
 
