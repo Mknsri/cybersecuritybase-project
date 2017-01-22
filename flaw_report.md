@@ -34,7 +34,7 @@ A logged in user that visits the login page (found at http://<host>/login) logs 
 	Email: test@test.com
 	Password: test
 2. Embed this request on another page:
-<img src="http://<host address>/login" />
+`<img src="http://<host address>/login" />`
 3. Visit the page containing this tag
 4. Try to access the main page of the application (http://<host address>/)
 5. You are logged out of your current session.
@@ -69,7 +69,7 @@ The posts feature allows user to post their thoughts for others to see. Due to p
 	Email: test@test.com
 	Password: test
 2. Into the post-textfield, type the following text:
-<script>document.body.style="background-color: pink;"</script>
+`<script>document.body.style="background-color: pink;"</script>`
 3. Press Submit
 4. The background color will turn pink for your and any other users opening the page
 ### How to fix the vulnerability:
