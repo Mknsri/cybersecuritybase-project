@@ -1,7 +1,7 @@
 Vulnerability analysis of Kuontalo-Opus web-application, part of the course project for the Cyber Security Base MOOC by the University of Helsinki
 
-The source code for this application can be found at https://github.com/Mknsri/cybersecuritybase-project
-The markdown version with improved readability of this document can be found at https://github.com/Mknsri/cybersecuritybase-project/flaw_report.md
+- The source code for this application can be found at https://github.com/Mknsri/cybersecuritybase-project
+- The markdown version with improved readability of this document can be found at https://github.com/Mknsri/cybersecuritybase-project/flaw_report.md
 
 Overview of the application:
 =============================
