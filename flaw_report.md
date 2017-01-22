@@ -33,6 +33,9 @@ How to replicate:
 3. Visit the page containing this tag
 4. Try to access the main page of the application (http://<host address>/)
 5. You are logged out of your current session.
+How to fix the vulnerability:
+CSRF protection is already enabled in the application, but incorrect usage of the request methods allows this exploit to work. To fix this vulnerability, create a POST-action form and request that logs the user out explicitly instead of doing it everytime a user visits the login page
+Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/41147ca6faedac03ec1857d076a49077f24ca6a9
 
 Vulnerability nr 2: Leaking user email addresses due to insecure object references
 OWASP Top 10 type: A4 - Insecure Direct Object References
@@ -43,6 +46,9 @@ How to replicate:
 3. Press submit, you will see a message about password reset link being sent
 4. Change the id parameter of the request url to another number between 2-5
 5. The email belonging to the user id's of these accounts will be displayed
+How to fix the vulnerability:
+The password reset message containing the users email can be sent in the same response without fetching the users email in the GET-request. This will fix the vulnerability and as an added measure you can hide part of the users email address to prevent leaking the email address to anyone looking over the users shoulder.
+Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/abf7948745cc75779dd567eadc94ad09764c5c55
 
 Vulnerability nr 3: Stored XSS vulnerability in the posts feature
 OWASP Top 10 type: A3 - Cross-Site Scripting (XSS)
@@ -55,6 +61,9 @@ How to replicate:
 <script>document.body.style="background-color: pink;"</script>
 3. Press submit
 4. The background color will turn pink for your and any other users opening the page
+How to fix the vulnerability:
+With Thymeleaf templates, fixing this vulnerability is simple. Just change the type of text used for posts in the mainpage-template from "utext" to "text"
+Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/c22b8ae796bb3c6630496f2f3a999149f5b3bd86
 
 Vulnerability nr 4: Impersonating as other users and submitting posts in their name
 OWASP Top 10 type: A2 - Broken Authentication and Session Management
@@ -66,6 +75,9 @@ How to replicate:
 2. Using your browsers console or some other tool, change the cookie sessionid to point to another users id (for example: 3)
 3. Submit a post using the form provided by the website
 4. Log back in to the application and you will see your post, but as made by another user
+How to fix this vulnerability:
+Redoing the session management should be the first priority, however as a quick fix you can add a check to verify that the session id and token matches by calling validUserLoggedIn() before creating a new post.
+Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/ef320061a4778c61c3afb27f6749cea987d79c12
 
 Vulnerability nr 5: Leaking password information through cookies
 OWASP Top 10 type: A6 - Sensitive Data Exposure
@@ -77,5 +89,8 @@ How to replicate:
 2. Find and copy the value of the cookie "sessiontoken"
 3. Input the value into an decimal to ASCII converter (for example https://www.branah.com/ascii-converter)
 4. Type a space between every 3rd number so (so for "test" account the token 116101115116 becomes 116 101 115 116)
-5. The password test is clearly visible
+5. The password "test" is clearly visible
+How to fix this vulnerability:
+Although switching the session management library to a better one should be first priority, as a quick fix we can encrypt the session token using Bcrypt to properly encrypt the passwords to avoid leaking user data.
+Fix commit: https://github.com/Mknsri/cybersecuritybase-project/commit/823a437c1776cabd3d1a4771e1ded4dce49e2654
 
