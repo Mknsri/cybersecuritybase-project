@@ -41,7 +41,9 @@ public class MainPageController {
     
     @RequestMapping(value = "/post", method = RequestMethod.POST)
     private String postPost(HttpServletRequest request, String message) {                        
-        postRepository.save(new Post(getLoggedInUser(request), message));
+        if (validUserLoggedIn(request)) {
+            postRepository.save(new Post(getLoggedInUser(request), message));
+        }
         
         return "redirect:/";
     }
